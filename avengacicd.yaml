@@ -1,0 +1,43 @@
+name: Robot API Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run-api-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Docker Buildx (optional, needed for advanced builds)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Step 3: Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t robot-api-tests .
+
+      # Step 4: Create results folder on host
+      - name: Create results folder
+        run: mkdir -p results
+
+      # Step 5: Run tests in Docker container
+      - name: Run Robot Framework tests
+        run: |
+          docker run --rm -v ${PWD}/results:/opt/robotframework/tests/results robot-api-tests
+
+      # Step 6: Upload test reports as workflow artifacts
+      - name: Upload test reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-api-reports
+          path: results
