@@ -1,0 +1,16 @@
+--suite Tests.CoverPhotos
+--variable CALLER_ID:7d32a58b556947bdbdabcb069ddd0b1c
+--variable PABOTLIBURI:127.0.0.1:8270
+--variable PABOTEXECUTIONPOOLID:4
+--variable PABOTISLASTEXECUTIONINPOOL:0
+--variable PABOTNUMBEROFPROCESSES:5
+--variable PABOTQUEUEINDEX:3
+--variable PABOTLASTLEVEL:Tests.CoverPhotos
+--listener RobotStackTracer
+--log NONE
+--report NONE
+--xunit NONE
+--outputdir .\pabot_results\3
+--consolecolors off
+--consolemarkers off
+.\tests\

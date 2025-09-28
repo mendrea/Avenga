@@ -1,0 +1,1070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20250928 18:56:49.123" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="C:\workspace\Avenga\tests">
+<suite id="s1-s1" name="Users" source="C:\workspace\Avenga\tests\Users.robot">
+<kw name="Create Session To API" library="Settings" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>fakerestapi</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<arg>disable_warnings=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250928 18:56:49.493" level="INFO">Creating Session using : alias=fakerestapi, url=https://fakerestapi.azurewebsites.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250928 18:56:49.493" endtime="20250928 18:56:49.495"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.493" endtime="20250928 18:56:49.495"/>
+</kw>
+<test id="s1-s1-t1" name="TC01 Get All Users" line="19">
+<kw name="GET On [/${API}/${VERSION}/Users] Endpoint And Validate That Status Code Is [200]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ path_url=/api/v1/Users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:49.691" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:47 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body=[{"id":1,"userName":"User 1","password":"Password1"},{"id":2,"userName":"User 2","password":"Password2"},{"id":3,"userName":"User 3","password":"Password3"},{"id":4,"userName":"User 4","password":"Password4"},{"id":5,"userName":"User 5","password":"Password5"},{"id":6,"userName":"User 6","password":"Password6"},{"id":7,"userName":"User 7","password":"Password7"},{"id":8,"userName":"User 8","password":"Password8"},{"id":9,"userName":"User 9","password":"Password9"},{"id":10,"userName":"User 10","password":"Password10"}] 
+ </msg>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.495" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${JSON_Response} = ('PASS', [{'id': 1, 'userName': 'User 1', 'password': 'Password1'}, {'id': 2, 'userName': 'User 2', 'password': 'Password2'}, {'id': 3, 'userName': 'User 3', 'password': 'Password3'}, {'id': 4, 'userN...</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${JSON_Response} = ('PASS', [{'id': 1, 'userName': 'User 1', 'password': 'Password1'}, {'id': 2, 'userName': 'User 2', 'password': 'Password2'}, {'id': 3, 'userName': 'User 3', 'password': 'Password3'}, {'id': 4, 'userN...</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${Actual_Response_Body} = ('PASS', [{'id': 1, 'userName': 'User 1', 'password': 'Password1'}, {'id': 2, 'userName': 'User 2', 'password': 'Password2'}, {'id': 3, 'userName': 'User 3', 'password': 'Password3'}, {'id': 4, 'userN...</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${Actual_Response_Body} = ('PASS', [{'id': 1, 'userName': 'User 1', 'password': 'Password1'}, {'id': 2, 'userName': 'User 2', 'password': 'Password2'}, {'id': 3, 'userName': 'User 3', 'password': 'Password3'}, {'id': 4, 'userN...</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.495" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${userlist}</var>
+<arg>${JSON_Response}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${userlist} = [{'id': 1, 'userName': 'User 1', 'password': 'Password1'}, {'id': 2, 'userName': 'User 2', 'password': 'Password2'}, {'id': 3, 'userName': 'User 3', 'password': 'Password3'}, {'id': 4, 'userName': 'Us...</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${first_user}</var>
+<arg>${userlist}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${first_user} = {'id': 1, 'userName': 'User 1', 'password': 'Password1'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${id}</var>
+<arg>${first_user}</arg>
+<arg>id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${id} = 1</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${userName}</var>
+<arg>${first_user}</arg>
+<arg>userName</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${userName} = User 1</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${first_user}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.691" level="INFO">${password} = Password1</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.691"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${id}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250928 18:56:49.707" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.691" endtime="20250928 18:56:49.707"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${userName}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20250928 18:56:49.707" level="INFO">Length is 6</msg>
+<status status="PASS" starttime="20250928 18:56:49.707" endtime="20250928 18:56:49.707"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${password}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20250928 18:56:49.707" level="INFO">Length is 9</msg>
+<status status="PASS" starttime="20250928 18:56:49.707" endtime="20250928 18:56:49.707"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.495" endtime="20250928 18:56:49.707"/>
+</test>
+<test id="s1-s1-t2" name="TC02 Get User By Valid Id" line="32">
+<kw name="GET On [/${API}/${VERSION}/Users/1] Endpoint And Validate That Status Code Is [200]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/1 
+ path_url=/api/v1/Users/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:49.760" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/1 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:47 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":1,"userName":"User 1","password":"Password1"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.707" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'userName': 'User 1', 'password': 'Password1'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'userName': 'User 1', 'password': 'Password1'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'userName': 'User 1', 'password': 'Password1'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'userName': 'User 1', 'password': 'Password1'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.707" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Validate That The Response Contains ['id': 1] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Validate That The Response Contains ['userName': 'User 1'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Validate That The Response Contains ['password': 'Password1'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.707" endtime="20250928 18:56:49.760"/>
+</test>
+<test id="s1-s1-t3" name="TC03 Create User With Valid Payload" line="38">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${first_digit} = 9</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${rest} = 8983</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.760" level="INFO">${rnd_id} = 98983</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.760"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_user}</var>
+<arg>5</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.771" level="INFO">${rnd_user} = CobGK</msg>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.771"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_pass}</var>
+<arg>8</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.771" level="INFO">${rnd_pass} = GVPCdDDC</msg>
+<status status="PASS" starttime="20250928 18:56:49.771" endtime="20250928 18:56:49.771"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${rnd_id}</arg>
+<arg>userName=${rnd_user}</arg>
+<arg>password=${rnd_pass}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.772" level="INFO">${PAYLOAD} = {'id': '98983', 'userName': 'CobGK', 'password': 'GVPCdDDC'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.771" endtime="20250928 18:56:49.772"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/Users] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ path_url=/api/v1/Users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '60', 'Content-Type': 'application/json'} 
+ body=b'{"id": "98983", "userName": "CobGK", "password": "GVPCdDDC"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.804" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:47 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":98983,"userName":"CobGK","password":"GVPCdDDC"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.772" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${JSON_Response} = ('PASS', {'id': 98983, 'userName': 'CobGK', 'password': 'GVPCdDDC'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${JSON_Response} = ('PASS', {'id': 98983, 'userName': 'CobGK', 'password': 'GVPCdDDC'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 98983, 'userName': 'CobGK', 'password': 'GVPCdDDC'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 98983, 'userName': 'CobGK', 'password': 'GVPCdDDC'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.772" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Validate That The Response Contains ['id': ${rnd_id}] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Validate That The Response Contains ['userName': '${rnd_user}'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.820"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.820"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.760" endtime="20250928 18:56:49.820"/>
+</test>
+<test id="s1-s1-t4" name="TC04 Update User With Valid Payload" line="49">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=1</arg>
+<arg>userName=UpdatedUser</arg>
+<arg>password=UpdatedPass</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.820" level="INFO">${PAYLOAD} = {'id': '1', 'userName': 'UpdatedUser', 'password': 'UpdatedPass'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.820"/>
+</kw>
+<kw name="PUT On [/${API}/${VERSION}/Users/1] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="PUT" sourcename="PUT On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send put request and validate status code</doc>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.885" level="INFO">PUT Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/1 
+ path_url=/api/v1/Users/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '65', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "userName": "UpdatedUser", "password": "UpdatedPass"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.885" level="INFO">PUT Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/1 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":1,"userName":"UpdatedUser","password":"UpdatedPass"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.899"/>
+</kw>
+<msg timestamp="20250928 18:56:49.899" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'userName': 'UpdatedUser', 'password': 'UpdatedPass'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.899"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.901" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'userName': 'UpdatedUser', 'password': 'UpdatedPass'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.901"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.901" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'userName': 'UpdatedUser', 'password': 'UpdatedPass'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.901" endtime="20250928 18:56:49.901"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.903" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'userName': 'UpdatedUser', 'password': 'UpdatedPass'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.901" endtime="20250928 18:56:49.903"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.903"/>
+</kw>
+<kw name="Validate That The Response Contains ['userName': 'UpdatedUser'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.903" endtime="20250928 18:56:49.903"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.903" endtime="20250928 18:56:49.903"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.820" endtime="20250928 18:56:49.905"/>
+</test>
+<test id="s1-s1-t5" name="TC05 Delete User With Valid Id" line="54">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.905" level="INFO">${first_digit} = 7</msg>
+<status status="PASS" starttime="20250928 18:56:49.905" endtime="20250928 18:56:49.905"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.907" level="INFO">${rest} = 9839</msg>
+<status status="PASS" starttime="20250928 18:56:49.905" endtime="20250928 18:56:49.907"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.907" level="INFO">${rnd_id} = 79839</msg>
+<status status="PASS" starttime="20250928 18:56:49.907" endtime="20250928 18:56:49.907"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_user}</var>
+<arg>5</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.907" level="INFO">${rnd_user} = HOjtv</msg>
+<status status="PASS" starttime="20250928 18:56:49.907" endtime="20250928 18:56:49.907"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_pass}</var>
+<arg>8</arg>
+<arg>[LETTERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.907" level="INFO">${rnd_pass} = xwxgjJtf</msg>
+<status status="PASS" starttime="20250928 18:56:49.907" endtime="20250928 18:56:49.907"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${rnd_id}</arg>
+<arg>userName=${rnd_user}</arg>
+<arg>password=${rnd_pass}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.909" level="INFO">${PAYLOAD} = {'id': '79839', 'userName': 'HOjtv', 'password': 'xwxgjJtf'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.907" endtime="20250928 18:56:49.909"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/Users] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.966" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ path_url=/api/v1/Users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '60', 'Content-Type': 'application/json'} 
+ body=b'{"id": "79839", "userName": "HOjtv", "password": "xwxgjJtf"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.966" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":79839,"userName":"HOjtv","password":"xwxgjJtf"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.966" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.909" endtime="20250928 18:56:49.966"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:49.966"/>
+</kw>
+<msg timestamp="20250928 18:56:49.966" level="INFO">${JSON_Response} = ('PASS', {'id': 79839, 'userName': 'HOjtv', 'password': 'xwxgjJtf'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:49.966"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.966" level="INFO">${JSON_Response} = ('PASS', {'id': 79839, 'userName': 'HOjtv', 'password': 'xwxgjJtf'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:49.966"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.966" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 79839, 'userName': 'HOjtv', 'password': 'xwxgjJtf'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:49.966"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.966" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 79839, 'userName': 'HOjtv', 'password': 'xwxgjJtf'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:49.966"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.909" endtime="20250928 18:56:49.966"/>
+</kw>
+<kw name="DELETE On [/${API}/${VERSION}/Users/${rnd_id}] Endpoint And Validate Status Code Is [200]" library="DELETE" sourcename="DELETE On [${THE_ENDPOINT}] Endpoint and Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send delete request and validate status code</doc>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.014" level="INFO">DELETE Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/79839 
+ path_url=/api/v1/Users/79839 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.014" level="INFO">DELETE Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/79839 
+ status=200, reason=OK 
+ headers={'Content-Length': '0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'api-supported-versions': '1.0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.014" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:50.014"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20250928 18:56:50.014" level="FAIL">JSONDecodeError: Expecting value: line 1 column 1 (char 0)</msg>
+<status status="FAIL" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.014"/>
+</kw>
+<msg timestamp="20250928 18:56:50.014" level="INFO">${JSON_Response} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.014"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.014" level="INFO">${JSON_Response} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.014"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.014" level="INFO">${Actual_Response_Body} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.014"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.014" level="INFO">${Actual_Response_Body} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.014"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.966" endtime="20250928 18:56:50.014"/>
+</kw>
+<kw name="GET On [/${API}/${VERSION}/Users/${rnd_id}] Endpoint And Validate That Status Code Is [404]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.446" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/79839 
+ path_url=/api/v1/Users/79839 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.446" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/79839 
+ status=404, reason=Not Found 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-eff3c16738dabb4c915de26d5e50c552-5895e2f67fbaa642-00"} 
+ </msg>
+<msg timestamp="20250928 18:56:50.446" level="INFO">${Response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.446"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.446" endtime="20250928 18:56:50.454"/>
+</kw>
+<msg timestamp="20250928 18:56:50.454" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-eff3c16738dabb4c915de26d5e50c552-5895e2f67fbaa642-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.446" endtime="20250928 18:56:50.454"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.454" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-eff3c16738dabb4c915de26d5e50c552-5895e2f67fbaa642-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.454"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.454" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-eff3c16738dabb4c915de26d5e50c552-5895e2f67fbaa642-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.454"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.454" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-eff3c16738dabb4c915de26d5e50c552-5895e2f67fbaa642-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.454"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.014" endtime="20250928 18:56:50.454"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.905" endtime="20250928 18:56:50.454"/>
+</test>
+<test id="s1-s1-t6" name="TC06 Get User By Invalid Id" line="69">
+<kw name="GET On [/${API}/${VERSION}/Users/99999] Endpoint And Validate That Status Code Is [404]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.490" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/99999 
+ path_url=/api/v1/Users/99999 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.490" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/99999 
+ status=404, reason=Not Found 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-12dd0e7191db2d498425208fadf8f198-794474a1c6337845-00"} 
+ </msg>
+<msg timestamp="20250928 18:56:50.490" level="INFO">${Response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.490"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.490"/>
+</kw>
+<msg timestamp="20250928 18:56:50.490" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-12dd0e7191db2d498425208fadf8f198-794474a1c6337845-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.490"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.490" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-12dd0e7191db2d498425208fadf8f198-794474a1c6337845-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.490"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.490" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-12dd0e7191db2d498425208fadf8f198-794474a1c6337845-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.490"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.490" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-12dd0e7191db2d498425208fadf8f198-794474a1c6337845-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.490"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.490"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.454" endtime="20250928 18:56:50.490"/>
+</test>
+<test id="s1-s1-t7" name="TC07 Get User With Non-Numeric Id" line="72">
+<kw name="GET On [/${API}/${VERSION}/Users/abc] Endpoint And Validate That Status Code Is [400]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/abc 
+ path_url=/api/v1/Users/abc 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.535" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/abc 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-c7dc220264e7cf469f1f41e19ad97c5b-9d1c8d7cfc4f1e45-00","errors":{"id":["The value 'abc' is not valid."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.543" endtime="20250928 18:56:50.543"/>
+</kw>
+<msg timestamp="20250928 18:56:50.543" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c7dc220264e7cf469f1f41e19ad97c5b-9d1c8d7cfc4f1e...</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.543"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.545" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c7dc220264e7cf469f1f41e19ad97c5b-9d1c8d7cfc4f1e...</msg>
+<status status="PASS" starttime="20250928 18:56:50.543" endtime="20250928 18:56:50.545"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.545" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c7dc220264e7cf469f1f41e19ad97c5b-9d1c8d7cfc4f1e...</msg>
+<status status="PASS" starttime="20250928 18:56:50.545" endtime="20250928 18:56:50.545"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.547" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c7dc220264e7cf469f1f41e19ad97c5b-9d1c8d7cfc4f1e...</msg>
+<status status="PASS" starttime="20250928 18:56:50.545" endtime="20250928 18:56:50.547"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.547"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.490" endtime="20250928 18:56:50.547"/>
+</test>
+<test id="s1-s1-t8" name="TC08 Create User With Missing Required Field" line="75">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.547" level="INFO">${first_digit} = 9</msg>
+<status status="PASS" starttime="20250928 18:56:50.547" endtime="20250928 18:56:50.547"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.547" level="INFO">${rest} = 2007</msg>
+<status status="PASS" starttime="20250928 18:56:50.547" endtime="20250928 18:56:50.547"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:50.549" level="INFO">${rnd_id} = 92007</msg>
+<status status="PASS" starttime="20250928 18:56:50.547" endtime="20250928 18:56:50.549"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${EMPTY}</arg>
+<arg>userName=${EMPTY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.549" level="INFO">${PAYLOAD} = {'id': '', 'userName': ''}</msg>
+<status status="PASS" starttime="20250928 18:56:50.549" endtime="20250928 18:56:50.549"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/Users] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ path_url=/api/v1/Users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '26', 'Content-Type': 'application/json'} 
+ body=b'{"id": "", "userName": ""}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.582" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-d95c25ec0904a147a77c115fb80abf18-b14afcee9a552b4c-00","errors":{"$.id":["The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 0 | BytePositionInLine: 9."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.549" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.590"/>
+</kw>
+<msg timestamp="20250928 18:56:50.590" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-d95c25ec0904a147a77c115fb80abf18-b14afcee9a552b...</msg>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.590"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.590" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-d95c25ec0904a147a77c115fb80abf18-b14afcee9a552b...</msg>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.590"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.590" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-d95c25ec0904a147a77c115fb80abf18-b14afcee9a552b...</msg>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.590"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.594" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-d95c25ec0904a147a77c115fb80abf18-b14afcee9a552b...</msg>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.594"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.549" endtime="20250928 18:56:50.594"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.547" endtime="20250928 18:56:50.594"/>
+</test>
+<test id="s1-s1-t9" name="TC09 Create User With Invalid Data Type" line="82">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${EMPTY}</arg>
+<arg>userName=123</arg>
+<arg>password=456</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.594" level="INFO">${PAYLOAD} = {'id': '', 'userName': '123', 'password': '456'}</msg>
+<status status="PASS" starttime="20250928 18:56:50.594" endtime="20250928 18:56:50.594"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/Users] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ path_url=/api/v1/Users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"id": "", "userName": "123", "password": "456"}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.630" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-e2bdc647e661b0449f7d4c809e1f3fdc-d790aba84a00eb4d-00","errors":{"$.id":["The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 0 | BytePositionInLine: 9."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.596" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e2bdc647e661b0449f7d4c809e1f3fdc-d790aba84a00eb...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e2bdc647e661b0449f7d4c809e1f3fdc-d790aba84a00eb...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e2bdc647e661b0449f7d4c809e1f3fdc-d790aba84a00eb...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e2bdc647e661b0449f7d4c809e1f3fdc-d790aba84a00eb...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.596" endtime="20250928 18:56:50.630"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.594" endtime="20250928 18:56:50.630"/>
+</test>
+<test id="s1-s1-t10" name="TC10 Update User With Non-Existing Id" line="86">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=id1111</arg>
+<arg>userName=GhostUser</arg>
+<arg>password=GhostPass</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${PAYLOAD} = {'id': 'id1111', 'userName': 'GhostUser', 'password': 'GhostPass'}</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="PUT On [/${API}/${VERSION}/Users/id1111] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="PUT" sourcename="PUT On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send put request and validate status code</doc>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.679" level="INFO">PUT Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/id1111 
+ path_url=/api/v1/Users/id1111 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
+ body=b'{"id": "id1111", "userName": "GhostUser", "password": "GhostPass"}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.679" level="INFO">PUT Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/id1111 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-c8c2fee579c2764b8df22ca69b020bac-d3b870b38426c64d-00","errors":{"id":["The value 'id1111' is not valid."],"$.id":["The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 0 | BytePositionInLine: 15."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.679" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.679"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.679"/>
+</kw>
+<msg timestamp="20250928 18:56:50.679" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c8c2fee579c2764b8df22ca69b020bac-d3b870b38426c6...</msg>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.679"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.679" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c8c2fee579c2764b8df22ca69b020bac-d3b870b38426c6...</msg>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.679"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.679" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c8c2fee579c2764b8df22ca69b020bac-d3b870b38426c6...</msg>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.679"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.679" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-c8c2fee579c2764b8df22ca69b020bac-d3b870b38426c6...</msg>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.679"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.679"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.679"/>
+</test>
+<test id="s1-s1-t11" name="TC11 Delete User With Non-Existing Id" line="90">
+<kw name="DELETE On [/${API}/${VERSION}/Users/ABC] Endpoint And Validate Status Code Is [400]" library="DELETE" sourcename="DELETE On [${THE_ENDPOINT}] Endpoint and Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send delete request and validate status code</doc>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">DELETE Request : url=https://fakerestapi.azurewebsites.net/api/v1/Users/ABC 
+ path_url=/api/v1/Users/ABC 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.712" level="INFO">DELETE Response : url=https://fakerestapi.azurewebsites.net/api/v1/Users/ABC 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-6fe59d5ee3f1d84b9e770fb3c87bd6ad-f08cdf933b1efd45-00","errors":{"id":["The value 'ABC' is not valid."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-6fe59d5ee3f1d84b9e770fb3c87bd6ad-f08cdf933b1efd...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-6fe59d5ee3f1d84b9e770fb3c87bd6ad-f08cdf933b1efd...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.728" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-6fe59d5ee3f1d84b9e770fb3c87bd6ad-f08cdf933b1efd...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.728"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.728" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-6fe59d5ee3f1d84b9e770fb3c87bd6ad-f08cdf933b1efd...</msg>
+<status status="PASS" starttime="20250928 18:56:50.728" endtime="20250928 18:56:50.728"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.728"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.679" endtime="20250928 18:56:50.728"/>
+</test>
+<status status="PASS" starttime="20250928 18:56:49.174" endtime="20250928 18:56:50.728"/>
+</suite>
+<status status="PASS" starttime="20250928 18:56:49.143" endtime="20250928 18:56:50.728"/>
+</suite>
+<statistics>
+<total>
+<stat pass="11" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="11" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="11" fail="0" skip="0" id="s1-s1" name="Users">Tests.Users</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

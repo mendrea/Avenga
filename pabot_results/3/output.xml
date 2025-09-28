@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.5 on win32)" generated="20250928 18:56:49.123" rpa="false" schemaversion="4">
+<suite id="s1" name="Tests" source="C:\workspace\Avenga\tests">
+<suite id="s1-s1" name="CoverPhotos" source="C:\workspace\Avenga\tests\CoverPhotos.robot">
+<kw name="Create Session To API" library="Settings" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>fakerestapi</arg>
+<arg>${BASE_URL}</arg>
+<arg>verify=${False}</arg>
+<arg>disable_warnings=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20250928 18:56:49.491" level="INFO">Creating Session using : alias=fakerestapi, url=https://fakerestapi.azurewebsites.net, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20250928 18:56:49.486" endtime="20250928 18:56:49.491"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.486" endtime="20250928 18:56:49.491"/>
+</kw>
+<test id="s1-s1-t1" name="TC01 Get All CoverPhotos" line="19">
+<kw name="GET On [/${API}/${VERSION}/CoverPhotos] Endpoint And Validate That Status Code Is [200]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.734" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ path_url=/api/v1/CoverPhotos 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:49.734" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:47 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body=[{"id":1,"idBook":1,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350"},{"id":2,"idBook":2,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 2&amp;w=250&amp;h=350"},{"id":3,"idBook":3,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 3&amp;w=250&amp;h=350"},{"id":4,"idBook":4,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 4&amp;w=250&amp;h=350"},{"id":5,"idBook":5,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 5&amp;w=250&amp;h=350"},{"id":6,"idBook":6,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 6&amp;w=250&amp;h=350"},{"id":7,"idBook":7,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 7&amp;w=250&amp;h=350"},{"id":8,"idBook":8,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 8&amp;w=250&amp;h=350"},{"id":9,"idBook":9,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 9&amp;w=250&amp;h=350"},{"id":10,"idBook":10,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 10&amp;w=250&amp;h=350"},{"id":11,"idBook":11,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 11&amp;w=250&amp;h=350"},{"id":12,"idBook":12,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 12&amp;w=250&amp;h=350"},{"id":13,"idBook":13,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 13&amp;w=250&amp;h=350"},{"id":14,"idBook":14,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 14&amp;w=250&amp;h=350"},{"id":15,"idBook":15,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 15&amp;w=250&amp;h=350"},{"id":16,"idBook":16,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 16&amp;w=250&amp;h=350"},{"id":17,"idBook":17,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 17&amp;w=250&amp;h=350"},{"id":18,"idBook":18,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 18&amp;w=250&amp;h=350"},{"id":19,"idBook":19,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 19&amp;w=250&amp;h=350"},{"id":20,"idBook":20,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 20&amp;w=250&amp;h=350"},{"id":21,"idBook":21,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 21&amp;w=250&amp;h=350"},{"id":22,"idBook":22,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 22&amp;w=250&amp;h=350"},{"id":23,"idBook":23,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 23&amp;w=250&amp;h=350"},{"id":24,"idBook":24,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 24&amp;w=250&amp;h=350"},{"id":25,"idBook":25,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 25&amp;w=250&amp;h=350"},{"id":26,"idBook":26,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 26&amp;w=250&amp;h=350"},{"id":27,"idBook":27,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 27&amp;w=250&amp;h=350"},{"id":28,"idBook":28,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 28&amp;w=250&amp;h=350"},{"id":29,"idBook":29,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 29&amp;w=250&amp;h=350"},{"id":30,"idBook":30,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 30&amp;w=250&amp;h=350"},{"id":31,"idBook":31,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 31&amp;w=250&amp;h=350"},{"id":32,"idBook":32,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 32&amp;w=250&amp;h=350"},{"id":33,"idBook":33,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 33&amp;w=250&amp;h=350"},{"id":34,"idBook":34,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 34&amp;w=250&amp;h=350"},{"id":35,"idBook":35,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 35&amp;w=250&amp;h=350"},{"id":36,"idBook":36,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 36&amp;w=250&amp;h=350"},{"id":37,"idBook":37,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 37&amp;w=250&amp;h=350"},{"id":38,"idBook":38,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 38&amp;w=250&amp;h=350"},{"id":39,"idBook":39,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 39&amp;w=250&amp;h=350"},{"id":40,"idBook":40,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 40&amp;w=250&amp;h=350"},{"id":41,"idBook":41,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 41&amp;w=250&amp;h=350"},{"id":42,"idBook":42,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 42&amp;w=250&amp;h=350"},{"id":43,"idBook":43,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 43&amp;w=250&amp;h=350"},{"id":44,"idBook":44,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 44&amp;w=250&amp;h=350"},{"id":45,"idBook":45,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 45&amp;w=250&amp;h=350"},{"id":46,"idBook":46,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 46&amp;w=250&amp;h=350"},{"id":47,"idBook":47,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 47&amp;w=250&amp;h=350"},{"id":48,"idBook":48,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 48&amp;w=250&amp;h=350"},{"id":49,"idBook":49,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 49&amp;w=250&amp;h=350"},{"id":50,"idBook":50,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 50&amp;w=250&amp;h=350"},{"id":51,"idBook":51,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 51&amp;w=250&amp;h=350"},{"id":52,"idBook":52,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 52&amp;w=250&amp;h=350"},{"id":53,"idBook":53,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 53&amp;w=250&amp;h=350"},{"id":54,"idBook":54,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 54&amp;w=250&amp;h=350"},{"id":55,"idBook":55,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 55&amp;w=250&amp;h=350"},{"id":56,"idBook":56,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 56&amp;w=250&amp;h=350"},{"id":57,"idBook":57,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 57&amp;w=250&amp;h=350"},{"id":58,"idBook":58,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 58&amp;w=250&amp;h=350"},{"id":59,"idBook":59,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 59&amp;w=250&amp;h=350"},{"id":60,"idBook":60,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 60&amp;w=250&amp;h=350"},{"id":61,"idBook":61,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 61&amp;w=250&amp;h=350"},{"id":62,"idBook":62,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 62&amp;w=250&amp;h=350"},{"id":63,"idBook":63,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 63&amp;w=250&amp;h=350"},{"id":64,"idBook":64,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 64&amp;w=250&amp;h=350"},{"id":65,"idBook":65,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 65&amp;w=250&amp;h=350"},{"id":66,"idBook":66,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 66&amp;w=250&amp;h=350"},{"id":67,"idBook":67,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 67&amp;w=250&amp;h=350"},{"id":68,"idBook":68,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 68&amp;w=250&amp;h=350"},{"id":69,"idBook":69,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 69&amp;w=250&amp;h=350"},{"id":70,"idBook":70,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 70&amp;w=250&amp;h=350"},{"id":71,"idBook":71,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 71&amp;w=250&amp;h=350"},{"id":72,"idBook":72,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 72&amp;w=250&amp;h=350"},{"id":73,"idBook":73,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 73&amp;w=250&amp;h=350"},{"id":74,"idBook":74,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 74&amp;w=250&amp;h=350"},{"id":75,"idBook":75,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 75&amp;w=250&amp;h=350"},{"id":76,"idBook":76,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 76&amp;w=250&amp;h=350"},{"id":77,"idBook":77,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 77&amp;w=250&amp;h=350"},{"id":78,"idBook":78,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 78&amp;w=250&amp;h=350"},{"id":79,"idBook":79,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 79&amp;w=250&amp;h=350"},{"id":80,"idBook":80,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 80&amp;w=250&amp;h=350"},{"id":81,"idBook":81,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 81&amp;w=250&amp;h=350"},{"id":82,"idBook":82,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 82&amp;w=250&amp;h=350"},{"id":83,"idBook":83,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 83&amp;w=250&amp;h=350"},{"id":84,"idBook":84,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 84&amp;w=250&amp;h=350"},{"id":85,"idBook":85,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 85&amp;w=250&amp;h=350"},{"id":86,"idBook":86,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 86&amp;w=250&amp;h=350"},{"id":87,"idBook":87,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 87&amp;w=250&amp;h=350"},{"id":88,"idBook":88,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 88&amp;w=250&amp;h=350"},{"id":89,"idBook":89,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 89&amp;w=250&amp;h=350"},{"id":90,"idBook":90,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 90&amp;w=250&amp;h=350"},{"id":91,"idBook":91,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 91&amp;w=250&amp;h=350"},{"id":92,"idBook":92,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 92&amp;w=250&amp;h=350"},{"id":93,"idBook":93,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 93&amp;w=250&amp;h=350"},{"id":94,"idBook":94,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 94&amp;w=250&amp;h=350"},{"id":95,"idBook":95,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 95&amp;w=250&amp;h=350"},{"id":96,"idBook":96,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 96&amp;w=250&amp;h=350"},{"id":97,"idBook":97,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 97&amp;w=250&amp;h=350"},{"id":98,"idBook":98,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 98&amp;w=250&amp;h=350"},{"id":99,"idBook":99,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 99&amp;w=250&amp;h=350"},{"id":100,"idBook":100,"url... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20250928 18:56:49.740" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.493" endtime="20250928 18:56:49.740"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.740" endtime="20250928 18:56:49.740"/>
+</kw>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${JSON_Response} = ('PASS', [{'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}, {'id': 2, 'idBook': 2, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book...</msg>
+<status status="PASS" starttime="20250928 18:56:49.740" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${JSON_Response} = ('PASS', [{'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}, {'id': 2, 'idBook': 2, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book...</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${Actual_Response_Body} = ('PASS', [{'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}, {'id': 2, 'idBook': 2, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book...</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${Actual_Response_Body} = ('PASS', [{'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}, {'id': 2, 'idBook': 2, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book...</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.493" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${coverlist}</var>
+<arg>${JSON_Response}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${coverlist} = [{'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}, {'id': 2, 'idBook': 2, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 2&amp;w=250&amp;...</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${first_cover}</var>
+<arg>${coverlist}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${first_cover} = {'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${id}</var>
+<arg>${first_cover}</arg>
+<arg>id</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.742" level="INFO">${id} = 1</msg>
+<status status="PASS" starttime="20250928 18:56:49.742" endtime="20250928 18:56:49.742"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${idBook}</var>
+<arg>${first_cover}</arg>
+<arg>idBook</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.746" level="INFO">${idBook} = 1</msg>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.746"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${url}</var>
+<arg>${first_cover}</arg>
+<arg>url</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20250928 18:56:49.746" level="INFO">${url} = https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350</msg>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.746"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${id}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250928 18:56:49.746" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.746"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${idBook}</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20250928 18:56:49.746" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.746"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${url}</arg>
+<arg>http</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.746"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.491" endtime="20250928 18:56:49.746"/>
+</test>
+<test id="s1-s1-t2" name="TC02 Get CoverPhoto By Valid Id" line="32">
+<kw name="GET On [/${API}/${VERSION}/CoverPhotos/1] Endpoint And Validate That Status Code Is [200]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/1 
+ path_url=/api/v1/CoverPhotos/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:49.804" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/1 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:47 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":1,"idBook":1,"url":"https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.749" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Validate That The Response Contains ['id': 1] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Validate That The Response Contains ['idBook': 1] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Validate That The Response Contains ['url': 'https://placeholdit.imgix.net/~text?txtsize=33&amp;txt=Book 1&amp;w=250&amp;h=350] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.746" endtime="20250928 18:56:49.804"/>
+</test>
+<test id="s1-s1-t3" name="TC03 Create CoverPhoto With Valid Payload" line="38">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${first_digit} = 2</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${rest} = 1569</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${rnd_id} = 21569</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_idBook}</var>
+<arg>1</arg>
+<arg>123</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${rnd_idBook} = 1</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_url}</var>
+<arg>https://example.com/${rnd_id}.jpg</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${rnd_url} = https://example.com/21569.jpg</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${rnd_id}</arg>
+<arg>idBook=${rnd_idBook}</arg>
+<arg>url=${rnd_url}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.804" level="INFO">${PAYLOAD} = {'id': '21569', 'idBook': '1', 'url': 'https://example.com/21569.jpg'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.804"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/CoverPhotos] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.885" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ path_url=/api/v1/CoverPhotos 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '70', 'Content-Type': 'application/json'} 
+ body=b'{"id": "21569", "idBook": "1", "url": "https://example.com/21569.jpg"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.885" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":21569,"idBook":1,"url":"https://example.com/21569.jpg"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${JSON_Response} = ('PASS', {'id': 21569, 'idBook': 1, 'url': 'https://example.com/21569.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${JSON_Response} = ('PASS', {'id': 21569, 'idBook': 1, 'url': 'https://example.com/21569.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 21569, 'idBook': 1, 'url': 'https://example.com/21569.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.885" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 21569, 'idBook': 1, 'url': 'https://example.com/21569.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Validate That The Response Contains ['id': ${rnd_id}] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.885" endtime="20250928 18:56:49.885"/>
+</kw>
+<kw name="Validate That The Response Contains ['url': '${rnd_url}'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.899"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.899"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.804" endtime="20250928 18:56:49.899"/>
+</test>
+<test id="s1-s1-t4" name="TC04 Update CoverPhoto With Valid Payload" line="49">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=1</arg>
+<arg>idBook=1</arg>
+<arg>url=https://example.com/updated1.jpg</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.901" level="INFO">${PAYLOAD} = {'id': '1', 'idBook': '1', 'url': 'https://example.com/updated1.jpg'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.901"/>
+</kw>
+<kw name="PUT On [/${API}/${VERSION}/CoverPhotos/1] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="PUT" sourcename="PUT On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send put request and validate status code</doc>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">PUT Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/1 
+ path_url=/api/v1/CoverPhotos/1 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '69', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "idBook": "1", "url": "https://example.com/updated1.jpg"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.943" level="INFO">PUT Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/1 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":1,"idBook":1,"url":"https://example.com/updated1.jpg"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.901" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://example.com/updated1.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${JSON_Response} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://example.com/updated1.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://example.com/updated1.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 1, 'idBook': 1, 'url': 'https://example.com/updated1.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.901" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Validate That The Response Contains ['url': 'https://example.com/updated1.jpg'] Data" library="Validations" sourcename="Validate that the response contains [${EXPECTED_DATA}] data">
+<doc>Validation of response</doc>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<arg>${EXPECTED_DATA}</arg>
+<arg>ignore_case=${False}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.899" endtime="20250928 18:56:49.943"/>
+</test>
+<test id="s1-s1-t5" name="TC05 Delete CoverPhoto With Valid Id" line="54">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${first_digit} = 2</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${rest} = 2291</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${rnd_id} = 22291</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rnd_idBook}</var>
+<arg>1</arg>
+<arg>123</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:49.943" level="INFO">${rnd_idBook} = 3</msg>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:49.943"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_url}</var>
+<arg>https://example.com/${rnd_id}.jpg</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:49.950" level="INFO">${rnd_url} = https://example.com/22291.jpg</msg>
+<status status="PASS" starttime="20250928 18:56:49.950" endtime="20250928 18:56:49.950"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${rnd_id}</arg>
+<arg>idBook=${rnd_idBook}</arg>
+<arg>url=${rnd_url}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:49.951" level="INFO">${PAYLOAD} = {'id': '22291', 'idBook': '3', 'url': 'https://example.com/22291.jpg'}</msg>
+<status status="PASS" starttime="20250928 18:56:49.950" endtime="20250928 18:56:49.951"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/CoverPhotos] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [200]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:49.986" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ path_url=/api/v1/CoverPhotos 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '70', 'Content-Type': 'application/json'} 
+ body=b'{"id": "22291", "idBook": "3", "url": "https://example.com/22291.jpg"}' 
+ </msg>
+<msg timestamp="20250928 18:56:49.986" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ status=200, reason=OK 
+ headers={'Content-Type': 'application/json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"id":22291,"idBook":3,"url":"https://example.com/22291.jpg"} 
+ </msg>
+<msg timestamp="20250928 18:56:49.986" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:49.951" endtime="20250928 18:56:49.986"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:49.986" endtime="20250928 18:56:49.998"/>
+</kw>
+<msg timestamp="20250928 18:56:49.998" level="INFO">${JSON_Response} = ('PASS', {'id': 22291, 'idBook': 3, 'url': 'https://example.com/22291.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.986" endtime="20250928 18:56:49.998"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.998" level="INFO">${JSON_Response} = ('PASS', {'id': 22291, 'idBook': 3, 'url': 'https://example.com/22291.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.998" endtime="20250928 18:56:49.998"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:49.998" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 22291, 'idBook': 3, 'url': 'https://example.com/22291.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.998" endtime="20250928 18:56:49.998"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:49.998" level="INFO">${Actual_Response_Body} = ('PASS', {'id': 22291, 'idBook': 3, 'url': 'https://example.com/22291.jpg'})</msg>
+<status status="PASS" starttime="20250928 18:56:49.998" endtime="20250928 18:56:49.998"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.951" endtime="20250928 18:56:49.998"/>
+</kw>
+<kw name="DELETE On [/${API}/${VERSION}/CoverPhotos/${rnd_id}] Endpoint And Validate Status Code Is [200]" library="DELETE" sourcename="DELETE On [${THE_ENDPOINT}] Endpoint and Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send delete request and validate status code</doc>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.030" level="INFO">DELETE Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/22291 
+ path_url=/api/v1/CoverPhotos/22291 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.043" level="INFO">DELETE Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/22291 
+ status=200, reason=OK 
+ headers={'Content-Length': '0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'api-supported-versions': '1.0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.043" level="INFO">${Response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.001" endtime="20250928 18:56:50.043"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<msg timestamp="20250928 18:56:50.043" level="FAIL">JSONDecodeError: Expecting value: line 1 column 1 (char 0)</msg>
+<status status="FAIL" starttime="20250928 18:56:50.043" endtime="20250928 18:56:50.043"/>
+</kw>
+<msg timestamp="20250928 18:56:50.043" level="INFO">${JSON_Response} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.043" endtime="20250928 18:56:50.043"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.043" level="INFO">${JSON_Response} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.043" endtime="20250928 18:56:50.043"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.046" level="INFO">${Actual_Response_Body} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.046" endtime="20250928 18:56:50.046"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.046" level="INFO">${Actual_Response_Body} = ('FAIL', 'JSONDecodeError: Expecting value: line 1 column 1 (char 0)')</msg>
+<status status="PASS" starttime="20250928 18:56:50.046" endtime="20250928 18:56:50.046"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.998" endtime="20250928 18:56:50.046"/>
+</kw>
+<kw name="GET On [/${API}/${VERSION}/CoverPhotos/${rnd_id}] Endpoint And Validate That Status Code Is [404]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.372" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/22291 
+ path_url=/api/v1/CoverPhotos/22291 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.372" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/22291 
+ status=404, reason=Not Found 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-67cd23a52073e2488a411c2eadebbba7-b1e89f3076978641-00"} 
+ </msg>
+<msg timestamp="20250928 18:56:50.372" level="INFO">${Response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.046" endtime="20250928 18:56:50.372"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.374" endtime="20250928 18:56:50.375"/>
+</kw>
+<msg timestamp="20250928 18:56:50.375" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-67cd23a52073e2488a411c2eadebbba7-b1e89f3076978641-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.372" endtime="20250928 18:56:50.375"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.375" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-67cd23a52073e2488a411c2eadebbba7-b1e89f3076978641-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.375"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.375" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-67cd23a52073e2488a411c2eadebbba7-b1e89f3076978641-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.375"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.375" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-67cd23a52073e2488a411c2eadebbba7-b1e89f3076978641-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.375"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.046" endtime="20250928 18:56:50.375"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:49.943" endtime="20250928 18:56:50.375"/>
+</test>
+<test id="s1-s1-t6" name="TC06 Get CoverPhoto By Invalid Id" line="69">
+<kw name="GET On [/${API}/${VERSION}/CoverPhotos/99999] Endpoint And Validate That Status Code Is [404]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.476" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/99999 
+ path_url=/api/v1/CoverPhotos/99999 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.476" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/99999 
+ status=404, reason=Not Found 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8; v=1.0', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked', 'api-supported-versions': '1.0'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.4","title":"Not Found","status":404,"traceId":"00-1ba8fb11e58b4848b973c6114a38c935-a6521384c6b23a49-00"} 
+ </msg>
+<msg timestamp="20250928 18:56:50.476" level="INFO">${Response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.476"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.476"/>
+</kw>
+<msg timestamp="20250928 18:56:50.476" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-1ba8fb11e58b4848b973c6114a38c935-a6521384c6b23a49-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.476"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.476" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-1ba8fb11e58b4848b973c6114a38c935-a6521384c6b23a49-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.476"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.476" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-1ba8fb11e58b4848b973c6114a38c935-a6521384c6b23a49-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.476"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.476" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.4', 'title': 'Not Found', 'status': 404, 'traceId': '00-1ba8fb11e58b4848b973c6114a38c935-a6521384c6b23a49-00'})</msg>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.476"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.476"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.375" endtime="20250928 18:56:50.476"/>
+</test>
+<test id="s1-s1-t7" name="TC07 Get CoverPhoto With Non-Numeric Id" line="72">
+<kw name="GET On [/${API}/${VERSION}/CoverPhotos/abc] Endpoint And Validate That Status Code Is [400]" library="GET" sourcename="GET on [${ENDPOINT}] endpoint and validate that status code is [${EXPECTED_STATUS_CODE}]">
+<doc>Send get request and validate status code</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">GET Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/abc 
+ path_url=/api/v1/CoverPhotos/abc 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.535" level="INFO">GET Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/abc 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-4d849ba0cad2284990b40700d90a2348-eb04565cfd80bf4a-00","errors":{"id":["The value 'abc' is not valid."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-4d849ba0cad2284990b40700d90a2348-eb04565cfd80bf...</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-4d849ba0cad2284990b40700d90a2348-eb04565cfd80bf...</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-4d849ba0cad2284990b40700d90a2348-eb04565cfd80bf...</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-4d849ba0cad2284990b40700d90a2348-eb04565cfd80bf...</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.535"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.476" endtime="20250928 18:56:50.535"/>
+</test>
+<test id="s1-s1-t8" name="TC08 Create CoverPhoto With Missing Required Field" line="75">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${first_digit} = 4</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${rest} = 7117</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:50.535" level="INFO">${rnd_id} = 47117</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.535"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${EMPTY}</arg>
+<arg>idBook=${EMPTY}</arg>
+<arg>url=${EMPTY}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.543" level="INFO">${PAYLOAD} = {'id': '', 'idBook': '', 'url': ''}</msg>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.543"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/CoverPhotos] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ path_url=/api/v1/CoverPhotos 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '35', 'Content-Type': 'application/json'} 
+ body=b'{"id": "", "idBook": "", "url": ""}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.582" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-0824fd1080f412498a86ed73dd3898c7-26a82bd313ce334e-00","errors":{"$.id":["The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 0 | BytePositionInLine: 9."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.543" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0824fd1080f412498a86ed73dd3898c7-26a82bd313ce33...</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0824fd1080f412498a86ed73dd3898c7-26a82bd313ce33...</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0824fd1080f412498a86ed73dd3898c7-26a82bd313ce33...</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0824fd1080f412498a86ed73dd3898c7-26a82bd313ce33...</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.543" endtime="20250928 18:56:50.582"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.535" endtime="20250928 18:56:50.582"/>
+</test>
+<test id="s1-s1-t9" name="TC09 Create CoverPhoto With Invalid Data Type" line="82">
+<kw name="Generate Random String" library="String">
+<var>${first_digit}</var>
+<arg>1</arg>
+<arg>123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${first_digit} = 4</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${rest}</var>
+<arg>4</arg>
+<arg>0123456789</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${rest} = 7660</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${rnd_id}</var>
+<arg>${first_digit}${rest}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${rnd_id} = 47660</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=${rnd_id}</arg>
+<arg>idBook=abc</arg>
+<arg>url=invalid_url</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.582" level="INFO">${PAYLOAD} = {'id': '47660', 'idBook': 'abc', 'url': 'invalid_url'}</msg>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.582"/>
+</kw>
+<kw name="POST On [/${API}/${VERSION}/CoverPhotos] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="POST" sourcename="POST On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send post request and validate status code</doc>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">POST Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ path_url=/api/v1/CoverPhotos 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '54', 'Content-Type': 'application/json'} 
+ body=b'{"id": "47660", "idBook": "abc", "url": "invalid_url"}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.630" level="INFO">POST Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-ebbcf036bd06954eb820dd6f2c2a7192-31cfb87001a66247-00","errors":{"$.idBook":["The JSON value could not be converted to System.Int32. Path: $.idBook | LineNumber: 0 | BytePositionInLine: 31."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.590" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-ebbcf036bd06954eb820dd6f2c2a7192-31cfb87001a662...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-ebbcf036bd06954eb820dd6f2c2a7192-31cfb87001a662...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-ebbcf036bd06954eb820dd6f2c2a7192-31cfb87001a662...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-ebbcf036bd06954eb820dd6f2c2a7192-31cfb87001a662...</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.630"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.582" endtime="20250928 18:56:50.630"/>
+</test>
+<test id="s1-s1-t10" name="TC10 Update CoverPhoto With Non-Existing Id" line="89">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${PAYLOAD}</var>
+<arg>id=avb1</arg>
+<arg>idBook=1</arg>
+<arg>url=https://example.com/ghost.jpg</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20250928 18:56:50.630" level="INFO">${PAYLOAD} = {'id': 'avb1', 'idBook': '1', 'url': 'https://example.com/ghost.jpg'}</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.630"/>
+</kw>
+<kw name="PUT On [/${API}/${VERSION}/CoverPhotos/avb] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [400]" library="PUT" sourcename="PUT On [${THE_ENDPOINT}] Endpoint With Payload [${PAYLOAD}] And Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send put request and validate status code</doc>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>json=${PAYLOAD}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">PUT Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/avb 
+ path_url=/api/v1/CoverPhotos/avb 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '69', 'Content-Type': 'application/json'} 
+ body=b'{"id": "avb1", "idBook": "1", "url": "https://example.com/ghost.jpg"}' 
+ </msg>
+<msg timestamp="20250928 18:56:50.712" level="INFO">PUT Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/avb 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-0b90f552e7deb441843b33b78db83768-29407d680257974f-00","errors":{"id":["The value 'avb' is not valid."],"$.id":["The JSON value could not be converted to System.Int32. Path: $.id | LineNumber: 0 | BytePositionInLine: 13."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0b90f552e7deb441843b33b78db83768-29407d68025797...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0b90f552e7deb441843b33b78db83768-29407d68025797...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0b90f552e7deb441843b33b78db83768-29407d68025797...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.712" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-0b90f552e7deb441843b33b78db83768-29407d68025797...</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.712"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.712"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.630" endtime="20250928 18:56:50.712"/>
+</test>
+<test id="s1-s1-t11" name="TC11 Delete CoverPhoto With Non-Existing Id" line="93">
+<kw name="DELETE On [/${API}/${VERSION}/CoverPhotos/ABC] Endpoint And Validate Status Code Is [400]" library="DELETE" sourcename="DELETE On [${THE_ENDPOINT}] Endpoint and Validate Status Code Is [${EXPECTED_STATUS_CODE}]">
+<doc>Send delete request and validate status code</doc>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${Response}</var>
+<arg>fakerestapi</arg>
+<arg>url=${THE_ENDPOINT}</arg>
+<arg>expected_status=${EXPECTED_STATUS_CODE}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20250928 18:56:50.756" level="INFO">DELETE Request : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/ABC 
+ path_url=/api/v1/CoverPhotos/ABC 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20250928 18:56:50.756" level="INFO">DELETE Response : url=https://fakerestapi.azurewebsites.net/api/v1/CoverPhotos/ABC 
+ status=400, reason=Bad Request 
+ headers={'Content-Type': 'application/problem+json; charset=utf-8', 'Date': 'Sun, 28 Sep 2025 16:56:48 GMT', 'Server': 'Kestrel', 'Transfer-Encoding': 'chunked'} 
+ body={"type":"https://tools.ietf.org/html/rfc7231#section-6.5.1","title":"One or more validation errors occurred.","status":400,"traceId":"00-e602becdeb4e954c9c1c3b0f6f9121fd-dafa1b82c9fdf146-00","errors":{"id":["The value 'ABC' is not valid."]}} 
+ </msg>
+<msg timestamp="20250928 18:56:50.756" level="INFO">${Response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.756"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${JSON_Response}</var>
+<arg>Convert String To Json</arg>
+<arg>${Response.content}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Convert String To Json" library="JSONLibrary">
+<arg>${Response.content}</arg>
+<doc>Convert String to JSON object</doc>
+<status status="PASS" starttime="20250928 18:56:50.760" endtime="20250928 18:56:50.760"/>
+</kw>
+<msg timestamp="20250928 18:56:50.760" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e602becdeb4e954c9c1c3b0f6f9121fd-dafa1b82c9fdf1...</msg>
+<status status="PASS" starttime="20250928 18:56:50.756" endtime="20250928 18:56:50.760"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${JSON_Response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.760" level="INFO">${JSON_Response} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e602becdeb4e954c9c1c3b0f6f9121fd-dafa1b82c9fdf1...</msg>
+<status status="PASS" starttime="20250928 18:56:50.760" endtime="20250928 18:56:50.760"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${Actual_Response_Body}</var>
+<arg>${JSON_Response}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20250928 18:56:50.760" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e602becdeb4e954c9c1c3b0f6f9121fd-dafa1b82c9fdf1...</msg>
+<status status="PASS" starttime="20250928 18:56:50.760" endtime="20250928 18:56:50.760"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${Actual_Response_Body}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20250928 18:56:50.760" level="INFO">${Actual_Response_Body} = ('PASS', {'type': 'https://tools.ietf.org/html/rfc7231#section-6.5.1', 'title': 'One or more validation errors occurred.', 'status': 400, 'traceId': '00-e602becdeb4e954c9c1c3b0f6f9121fd-dafa1b82c9fdf1...</msg>
+<status status="PASS" starttime="20250928 18:56:50.760" endtime="20250928 18:56:50.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.760"/>
+</kw>
+<status status="PASS" starttime="20250928 18:56:50.712" endtime="20250928 18:56:50.760"/>
+</test>
+<status status="PASS" starttime="20250928 18:56:49.172" endtime="20250928 18:56:50.760"/>
+</suite>
+<status status="PASS" starttime="20250928 18:56:49.140" endtime="20250928 18:56:50.760"/>
+</suite>
+<statistics>
+<total>
+<stat pass="11" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="11" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="11" fail="0" skip="0" id="s1-s1" name="CoverPhotos">Tests.CoverPhotos</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

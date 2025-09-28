@@ -1,0 +1,140 @@
+```markdown
+# Robot Framework API Automation Tests
+
+This repository contains **Robot Framework test suites** for API automation using the [Fake REST API](https://fakerestapi.azurewebsites.net/index.html). Tests are designed to run in **Docker** and leverage **Pabot** for parallel execution.
+
+---
+
+## Prerequisites
+
+1. [Docker](https://www.docker.com/get-started) installed on your machine.
+2. Optional: `git` to clone this repository.
+
+---
+
+## Repository Structure
+
+```
+
+.
+├── Dockerfile               # Docker image definition
+├── Settings.robot           # Global settings and library imports
+├── tests/                   # Robot Framework test suites
+├── Keywords/                # Custom keywords for GET, POST, PUT, DELETE, Validations
+└── README.md                # This file
+
+````
+
+---
+
+## Build Docker Image
+
+Navigate to the repository root (where `Dockerfile` exists) and build the image:
+
+```bash
+docker build -t robot-api-tests .
+````
+
+* `-t robot-api-tests` → sets the image name.
+* `.` → current directory as build context.
+
+---
+
+## Run All Tests in Parallel
+
+By default, Pabot runs all suites in parallel:
+
+```bash
+docker run --rm robot-api-tests
+```
+
+Reports are generated inside the container:
+
+* `output.xml`
+* `log.html`
+* `report.html`
+
+---
+
+## Run a Specific Test Suite
+
+You can run a single suite instead of all tests:
+
+```bash
+docker run --rm robot-api-tests robot tests/Users.robot
+```
+
+---
+
+## Accessing Reports on Host Machine
+
+To save reports outside the container, mount a volume:
+
+```bash
+docker run --rm -v ${PWD}/results:/opt/robotframework/tests/results robot-api-tests
+```
+
+Reports will appear in the `results/` folder on your host.
+
+---
+
+## Parallel Execution with Pabot
+
+* The Dockerfile uses **Pabot** with `--processes 5` by default.
+* Modify the Dockerfile ENTRYPOINT if you want to change the number of parallel processes.
+
+---
+
+## Adding New Test Suites
+
+1. Add your `.robot` test file to the `tests/` folder.
+2. Ensure any custom keywords are in `Keywords/`.
+3. Run the Docker container; Pabot automatically picks up all suites.
+
+---
+
+## Installing Additional Libraries
+
+If your tests need additional Robot Framework libraries:
+
+1. Add them to the Dockerfile `RUN pip install` line.
+2. Rebuild the Docker image.
+
+Example:
+
+```dockerfile
+RUN pip install --no-cache-dir \
+    robotframework-requests \
+    robotframework-pabot \
+    robotframework-jsonlibrary \
+    robotframework-seleniumlibrary
+```
+
+---
+
+## CI/CD Integration
+
+* You can use this Docker image in a CI/CD pipeline (GitHub Actions, GitLab CI, Jenkins, etc.) by running:
+
+```bash
+docker build -t robot-api-tests .
+docker run --rm robot-api-tests
+```
+
+* Reports can be archived as pipeline artifacts for review.
+
+---
+
+## Notes
+
+* This setup runs **all tests as root** inside the container for simplicity.
+* Pabot ensures tests run in parallel, speeding up the execution of large test suites.
+* Customize API URL or test data by updating the `Settings.robot` or test variables.
+
+---
+
+## References
+
+* [Robot Framework Documentation](https://robotframework.org/)
+* [Pabot Documentation](https://pabot.org/)
+* [Fake REST API](https://fakerestapi.azurewebsites.net/index.html)
